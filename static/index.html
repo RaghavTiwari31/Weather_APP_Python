@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Weather Application</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-background" class="bg-landing">
+        <!-- Separate Fullscreen Background Animation Layers -->
+        <div id="bg-layer-stars" class="bg-layer hidden"></div>
+        <div id="bg-layer-sun" class="bg-layer hidden"></div>
+        <div id="bg-layer-clouds" class="bg-layer hidden"></div>
+        <div id="bg-layer-rain" class="bg-layer hidden"></div>
+        <div id="bg-layer-snow" class="bg-layer hidden"></div>
+        <div id="bg-layer-lightning" class="bg-layer hidden"></div>
+    </div>
+
+    <div id="app-wrapper" class="state-landing">
+        
+        <!-- Search Section -->
+        <div class="search-section">
+            <div id="landing-hero" class="landing-hero">
+                <h1>Global Weather Insights.</h1>
+                <p>Live conditions and 10-day forecasts.</p>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="city-input" placeholder="Search for a city..." autocomplete="off">
+                    <button id="search-btn" aria-label="Search">
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                    <!-- Loading Spinner for Authocomplete -->
+                    <div id="search-spinner" class="spinner hidden"></div>
+                </div>
+                <div id="suggestions" class="suggestions-dropdown hidden"></div>
+            </div>
+        </div>
+        
+        <!-- Main Content Section -->
+        <div id="content-section" class="content-section hidden">
+            <div id="loading" class="status-msg hidden">Gathering atmospheric data...</div>
+            <div id="error-msg" class="status-msg hidden"></div>
+            
+            <div id="weather-scroll-area" class="scroll-area hidden">
+                <div class="cards-layout">
+                    <!-- Current Weather Card -->
+                    <div id="weather-card" class="weather-card panel">
+                        <div class="location-header">
+                            <h1 id="city-name">--</h1>
+                            <p id="country-name">--</p>
+                        </div>
+                        
+                        <div class="main-weather">
+                            <div class="weather-icon-wrapper">
+                                <div id="weather-icon-slot"></div>
+                            </div>
+                            <div class="temp-wrapper">
+                                <span id="temperature">--</span><span class="celsius">°</span>
+                            </div>
+                            <p id="condition-text" class="condition-description">--</p>
+                        </div>
+                        
+                        <div class="weather-details">
+                            <div class="detail-item">
+                                <span class="label">Humidity</span>
+                                <span class="value" id="humidity">--%</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Wind</span>
+                                <span class="value" id="wind">-- km/h</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Precip</span>
+                                <span class="value" id="precip">-- mm</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- 10 Day Forecast Card -->
+                    <div id="forecast-card" class="forecast-card panel">
+                        <h3>10-Day Forecast</h3>
+                        <div id="forecast-list" class="forecast-list">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
